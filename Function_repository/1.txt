@@ -1,0 +1,25 @@
+//function to add a string to midle of another string
+void addString(char str1[], char str2[], int pos)
+{
+  int i=0, j=0, k=0;
+  char str3[100];
+
+  while (str1[i] != '\0')
+  {
+    if (i == pos)
+    {
+      while (str2[j] != '\0')
+      {
+        str3[k] = str2[j];
+        j++;
+        k++;
+      }
+    }
+    str3[k] = str1[i];
+    i++;
+    k++;
+  }
+  str3[k] = '\0';
+  printf("String 3: ");
+  exibirString(str3);
+}

@@ -1,0 +1,4 @@
+teste@teste.com|Prezado Maria, a vacina do pet Peludo venceu no dia 10/10/2019.
+Podemos agendar a nova dose?
+teste@teste.com|Prezado José, a vacina do pet Pipoca venceu no dia 01/01/2019.
+Podemos agendar a nova dose?
