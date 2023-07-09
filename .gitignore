@@ -29,5 +29,6 @@ settings.json
 tasks.json
 launch.json
 
-#ignore exe files
+#ignore exe files in every possible directory
+!*.exe
 *.exe
