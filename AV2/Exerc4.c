@@ -25,14 +25,15 @@
 
 #define TAM 5
 
-typedef struct No{
+typedef struct No
+{
   int valor;
   struct No *prox;
 } TNo;
 
-typedef TNo* TLista;
+typedef TNo *TLista;
 
-//prototipos das funcoes
+// prototipos das funcoes
 int menu();
 void exibir(TLista *fila);
 void imprimirFila(TLista fila);
@@ -43,52 +44,51 @@ int main(void)
 {
   TLista filas[TAM], ultimos[TAM];
   int op, valor, prioridade;
-  //inicializa as filas
+  // inicializa as filas
   for (int i = 0; i < TAM; i++)
   {
     filas[i] = NULL;
     ultimos[i] = NULL;
   }
-  //menu
+  // menu
   op = menu();
 
-  while(op != 4)
+  while (op != 4)
   {
-    switch(op)
+    switch (op)
     {
-      case 1:
-        //limpa console
-        system("cls");
-        //recebe o valor a ser inserido
-        printf("Digite o valor a ser inserido: ");
-        scanf("%d", &valor);
-        //recebe a prioridade
-        printf("Digite a prioridade: ");
-        scanf("%d", &prioridade);
-        //insere o valor na fila
-        inserirNaFila(&filas[prioridade], &ultimos[prioridade], valor);
-        break;
-      case 2:
-        //limpa console
-        system("cls");
-        //remove o primeiro elemento da fila
-        removerDaFila(&filas, &ultimos, &valor);
-        printf("Valor removido: %d\n", valor);
-        break;
-      case 3:
-        //limpa console
-        system("cls");
-        //imprime a fila
-        exibir(filas);
-        break;
+    case 1:
+      // limpa console
+      system("cls");
+      // recebe o valor a ser inserido
+      printf("Digite o valor a ser inserido: ");
+      scanf("%d", &valor);
+      // recebe a prioridade
+      printf("Digite a prioridade: ");
+      scanf("%d", &prioridade);
+      // insere o valor na fila
+      inserirNaFila(&filas[prioridade], &ultimos[prioridade], valor);
+      break;
+    case 2:
+      // limpa console
+      system("cls");
+      // remove o primeiro elemento da fila
+      removerDaFila(&filas, &ultimos, &valor);
+      printf("Valor removido: %d\n", valor);
+      break;
+    case 3:
+      // limpa console
+      system("cls");
+      // imprime a fila
+      exibir(filas);
+      break;
     }
-    //menu
+    // menu
     op = menu();
   }
-
 }
 
-//funções
+// funções
 int menu()
 {
   int op;
@@ -103,7 +103,7 @@ int menu()
 
 void exibir(TLista *fila)
 {
-  //exibe cada elemento da fila prioridade por prioridade
+  // exibe cada elemento da fila prioridade por prioridade
   for (int i = 0; i < TAM; i++)
   {
     printf("Fila %d: ", i);
@@ -124,8 +124,9 @@ void imprimirFila(TLista fila)
 
 int inserirNaFila(TLista *fila, TLista *ultimo, int valor)
 {
-  TLista aux = (TLista) malloc(sizeof(TNo));
-  if (aux == NULL) return 0;
+  TLista aux = (TLista)malloc(sizeof(TNo));
+  if (aux == NULL)
+    return 0;
   aux->valor = valor;
   aux->prox = NULL;
   if (*fila == NULL)
@@ -139,17 +140,17 @@ int inserirNaFila(TLista *fila, TLista *ultimo, int valor)
   *ultimo = aux;
   return 1;
 }
-//função ira remover da fila por prioridade, ou seja ira começar pela fila de maior prioridade que é a 0 até chegar na de menor prioridade que é a TAM-1
+// função ira remover da fila por prioridade, ou seja ira começar pela fila de maior prioridade que é a 0 até chegar na de menor prioridade que é a TAM-1
 int removerDaFila(TLista *fila, TLista *ultimo, int *valor)
 {
   TLista aux;
-  //percorre as filas
+  // percorre as filas
   for (int i = 0; i < TAM; i++)
   {
-    //verifica se a fila possui elementos
+    // verifica se a fila possui elementos
     if (fila[i] != NULL)
     {
-      //remove o primeiro elemento da fila
+      // remove o primeiro elemento da fila
       aux = fila[i];
       *valor = aux->valor;
       fila[i] = aux->prox;
@@ -159,5 +160,3 @@ int removerDaFila(TLista *fila, TLista *ultimo, int *valor)
   }
   return 0;
 }
-
-

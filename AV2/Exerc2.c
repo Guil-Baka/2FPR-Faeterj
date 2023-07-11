@@ -3,33 +3,32 @@
 
 #define qElementos 12
 
-typedef struct No{
+typedef struct No
+{
   int valor;
   struct No *prox;
 } TNo;
 
-typedef TNo* TLista;
+typedef TNo *TLista;
 
-
-
-//prototipos das funcoes
+// prototipos das funcoes
 
 int main(void)
 {
-  int i,pos;
+  int i, pos;
   TLista lista = NULL;
-  //popular lista usando for
+  // popular lista usando for
   for (i = 0; i < qElementos; i++)
   {
     inserir(&lista, i);
-  } 
-  //exibir lista
+  }
+  // exibir lista
   exibir(lista);
-  //pedir posicao
+  // pedir posicao
   printf("Digite a posicao a ser removida: ");
   scanf("%d", &pos);
   pos = removerPosicaoRecursivo(&lista, pos);
-  //elemento foi removido?
+  // elemento foi removido?
   if (pos == 1)
   {
     printf("Elemento removido com sucesso!\n");
@@ -38,22 +37,22 @@ int main(void)
   {
     printf("Elemento nao removido!\n");
   }
-  //exibir lista novamente
+  // exibir lista novamente
   exibir(lista);
 }
 
-
-int inserir (TLista *lista, int numero)
+int inserir(TLista *lista, int numero)
 {
-  TLista aux = (TLista) malloc(sizeof(TNo));
-  if (aux == NULL) return 0;
+  TLista aux = (TLista)malloc(sizeof(TNo));
+  if (aux == NULL)
+    return 0;
   aux->valor = numero;
   aux->prox = *lista;
   *lista = aux;
   return 1;
 }
 
-int exibir (TLista lista)
+int exibir(TLista lista)
 {
   TLista aux = lista;
   while (aux != NULL)
@@ -79,4 +78,3 @@ int removerPosicaoRecursivo(TLista *lista, int posicao)
     return removerPosicaoRecursivo(&(*lista)->prox, posicao - 1);
   }
 }
-
