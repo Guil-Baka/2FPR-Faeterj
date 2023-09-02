@@ -28,3 +28,6 @@
 settings.json
 tasks.json
 launch.json
+
+# ignore executable files
+*.exe
