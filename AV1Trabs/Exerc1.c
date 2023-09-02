@@ -7,7 +7,7 @@
 
 //Protótipos das funções
 void lerMatriz(int matriz[linhas][colunas]);
-void empurrarColuna(int matriz[linhas][colunas], int coluna);
+int empurrarColuna(int matriz[linhas][colunas], int coluna);
 
 //Função principal
 int main()
@@ -56,11 +56,17 @@ void lerMatriz(int matriz[linhas][colunas])
 }
 
 //Empurra coluna X para fim da matriz
-void empurrarColuna(int matriz[linhas][colunas], int coluna)
+int empurrarColuna(int matriz[linhas][colunas], int coluna)
 {
   //Declaração de variáveis
   int i, j=0;
   int aux=0;
+
+  if (coluna<0)
+  {
+    return 0;
+  }else{
+  
   //for para percorrer as linhas
   for (i = 0; i < linhas; i++)
   {
@@ -71,5 +77,7 @@ void empurrarColuna(int matriz[linhas][colunas], int coluna)
       matriz[i][j] = matriz[i][j+1];
     }
     matriz[i][colunas-1] = aux;
+  }
+  return 1;
   }
 }
